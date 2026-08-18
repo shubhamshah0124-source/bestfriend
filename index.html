@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>For My Bestie 💕</title>
+  <meta name="description" content="A special website dedicated to the best friend in the world">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Background -->
+  <div class="floating-bg" id="floatingBg"></div>
+
+  <!-- Confetti -->
+  <canvas id="confetti"></canvas>
+
+  <!-- ===== SLIDE 1: Enter Name ===== -->
+  <section class="slide active" id="slide-name">
+    <div class="slide-inner">
+      <div class="heart-orbit">
+        <span>♥</span><span>♥</span><span>♥</span>
+        <span>♥</span><span>♥</span><span>♥</span>
+      </div>
+      <p class="label-sm">this is for someone really special...</p>
+      <h1 class="title-lg">Who's Your <span class="accent">Bestie</span>?</h1>
+      <div class="input-wrap">
+        <input type="text" id="nameInput" class="text-input" placeholder="type her name here..." autocomplete="off" maxlength="25">
+        <div class="input-shine"></div>
+      </div>
+      <button class="btn-primary" id="btnStart" disabled>
+        Let's Go <span class="arrow">→</span>
+      </button>
+      <p class="hint">psst... she's gonna love this 🤫</p>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 2: Name Reveal ===== -->
+  <section class="slide" id="slide-reveal">
+    <div class="slide-inner">
+      <p class="label-sm">this entire website is for</p>
+      <h1 class="name-giant" id="nameDisplay"></h1>
+      <p class="tagline">the most <span class="typed" id="typed"></span><span class="blinker">|</span></p>
+      <div class="heart-row"><span>♥</span><span>♥</span><span>♥</span></div>
+      <button class="btn-primary" id="btnRevealNext">Aww continue 💕</button>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 3: Annoying "Are you sure?" ===== -->
+  <section class="slide" id="slide-areyousure">
+    <div class="slide-inner">
+      <div class="emoji-big">🤔</div>
+      <h1 class="title-lg">Wait... Are you <span class="accent">really</span> her bestie?</h1>
+      <p class="subtitle">Prove it. Answer honestly.</p>
+      <div class="choice-row">
+        <button class="btn-choice" id="btnYes">Yes, obviously 🙄</button>
+        <button class="btn-choice btn-wrong" id="btnNo">Hmm, maybe not</button>
+      </div>
+      <p class="wrong-msg hidden" id="wrongMsg1"></p>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 4: Annoying Quiz ===== -->
+  <section class="slide" id="slide-quiz">
+    <div class="slide-inner">
+      <div class="emoji-big">📝</div>
+      <h1 class="title-lg">Quick <span class="accent">Bestie</span> Test</h1>
+      <p class="subtitle" id="quizQuestion"></p>
+      <div class="choice-col" id="quizOptions"></div>
+      <p class="wrong-msg hidden" id="wrongQuiz"></p>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 5: Runaway Button ===== -->
+  <section class="slide" id="slide-runaway">
+    <div class="slide-inner full-area">
+      <h1 class="title-lg">Catch the button to continue 😈</h1>
+      <p class="subtitle">good luck bestie...</p>
+      <div class="chase-area" id="chaseArea">
+        <button class="chase-btn" id="chaseBtn">Click Me!</button>
+      </div>
+      <p class="caught-text hidden" id="caughtText">YOU GOT IT! 🎉 Fine, you can continue...</p>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 6: Rate Friendship (rigged) ===== -->
+  <section class="slide" id="slide-rate">
+    <div class="slide-inner">
+      <div class="emoji-big">⭐</div>
+      <h1 class="title-lg">Rate Our <span class="accent">Friendship</span></h1>
+      <p class="subtitle">be honest... just kidding there's only one right answer 😤</p>
+      <div class="choice-col" id="rateOptions">
+        <button class="btn-choice btn-wrong" data-r="terrible">💔 Terrible</button>
+        <button class="btn-choice btn-wrong" data-r="meh">😐 Meh</button>
+        <button class="btn-choice btn-wrong" data-r="good">😊 Good</button>
+        <button class="btn-choice btn-right" data-r="best">💖 THE BEST EVER</button>
+      </div>
+      <p class="wrong-msg hidden" id="wrongRate"></p>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 7: Interactive Bestie Q&A ===== -->
+  <section class="slide" id="slide-qa">
+    <div class="slide-inner">
+      <div class="qa-badge">Q&A Time 💭</div>
+      <p class="qa-step" id="qaStep">Question 1 of 4</p>
+      <h1 class="title-lg qa-question" id="qaQuestion">What's your favorite memory of us together? 📸</h1>
+      <div class="qa-input-wrap">
+        <textarea id="qaAnswer" class="qa-textarea" placeholder="type your answer here..." rows="3"></textarea>
+      </div>
+      <button class="btn-primary" id="btnQaNext">
+        Next Question <span class="arrow">→</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 8: Compliment Bomb ===== -->
+  <section class="slide" id="slide-compliment">
+    <div class="slide-inner">
+      <div class="compliment-bubble" id="complimentBubble">
+        <p class="comp-emoji" id="compEmoji">✨</p>
+        <p class="comp-text" id="compText">Press the button!</p>
+      </div>
+      <p class="comp-counter"><span id="compCount">0</span> / 5 compliments</p>
+      <button class="btn-primary btn-glow" id="btnCompliment">Give Me a Compliment 💫</button>
+      <button class="btn-primary hidden" id="btnCompNext">I'm blushing, continue 🥰</button>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 9: Love Letter ===== -->
+  <section class="slide" id="slide-letter">
+    <div class="slide-inner">
+      <div class="envelope" id="envelope">
+        <div class="env-flap"></div>
+        <div class="env-body">
+          <p class="env-label">💌 A Letter For You</p>
+          <p class="env-hint">tap to open</p>
+        </div>
+      </div>
+      <div class="letter hidden" id="letter">
+        <p class="letter-dear">Dear <span id="letterName"></span>,</p>
+        <p class="letter-body">
+          I know I annoy you. I know I'm dramatic. I know I send you 47 texts in a row 
+          and get offended when you take 3 minutes to reply. But honestly? 
+          You're the only person who puts up with all my chaos and still chooses to stay. 
+          <br><br>
+          You've seen me at my worst — ugly crying, overthinking at 3am, being petty 
+          for no reason — and you STILL call me your best friend. 
+          <br><br>
+          Thank you for being my person. My unpaid therapist. My partner in crime. 
+          My favorite notification. My "I'll be there in 5" (who takes 30 minutes). 
+          <br><br>
+          No matter what happens, you'll always be my #1. Always. 
+          <br><br>
+          Now stop crying and send me a meme. 😤💕
+        </p>
+        <p class="letter-sign">— Your Bestie Forever 💕</p>
+        <button class="btn-primary" id="btnLetterNext" style="margin-top:1.5rem;">I'm not crying, you are 😭</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 10: Final Recap & Summary ===== -->
+  <section class="slide" id="slide-final">
+    <div class="slide-inner">
+      <div class="final-hearts" id="finalHearts"></div>
+      <h1 class="name-giant accent" id="finalName"></h1>
+      <h2 class="title-lg">You're stuck with me <span class="accent">forever</span>.</h2>
+      <p class="subtitle">No refunds. No exchanges. No escape. 😤💖</p>
+      
+      <!-- User's Q&A Summary Box -->
+      <div class="qa-summary-card hidden" id="qaSummaryCard">
+        <h3 class="qa-summary-title">💌 Your Answers & Memories:</h3>
+        <div id="qaSummaryContent"></div>
+        
+        <!-- Action Buttons to Send Answers to You -->
+        <div class="qa-share-row">
+          <button class="btn-share btn-wa" id="btnShareWa">
+            💬 Send Answers on WhatsApp
+          </button>
+          <button class="btn-share btn-copy" id="btnCopyAnswers">
+            📋 Copy Answers
+          </button>
+        </div>
+        <p class="share-notice hidden" id="shareNotice">Copied to clipboard! 📋 Paste it to send!</p>
+      </div>
+
+      <div class="promise-stack" id="promiseStack"></div>
+      <button class="btn-primary" id="btnRestart">Start Over? 🔄</button>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
